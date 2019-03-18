@@ -19,10 +19,15 @@ loginBean.setUserName(userName); //setting the username and password through the
 loginBean.setPassword(password);
 LoginDao loginDao = new LoginDao(); //creating object for LoginDao. This class contains main logic of the application.
 String userValidate = loginDao.authenticateUser(loginBean); //Calling authenticateUser function
-if(userValidate.equals("SUCCESS")) //If function returns success string then user will be rooted to Home page
+if(userValidate.equals("SUCCESS1")) //If function returns success string then user will be rooted to Home page
 {
 request.setAttribute("userName", userName); //with setAttribute() you can define a "key" and value pair so that you can get it in future using getAttribute("key")
-request.getRequestDispatcher("/Home.jsp").forward(request, response);//RequestDispatcher is used to send the control to the invoked page.
+request.getRequestDispatcher("/StudentHome.jsp").forward(request, response);//RequestDispatcher is used to send the control to the invoked page.
+}
+else if(userValidate.equals("SUCCESS2"))
+{
+request.setAttribute("userName", userName); //with setAttribute() you can define a "key" and value pair so that you can get it in future using getAttribute("key")
+request.getRequestDispatcher("/FacultyHome.jsp").forward(request, response);//RequestDispatcher is used to send the control to the invoked page.
 }
 else
 {
